@@ -1,8 +1,9 @@
 var express = require('express'),
-    http = require('http');
+    http = require('http'),
+    path = require('path');
 
 var app = express(),
-    server = http.createServer(app)
+    server = http.createServer(app);
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
@@ -13,7 +14,7 @@ app.configure(function(){
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(app.router);
-  app.use(express.static(__dirname, '/public'));
+  app.use(express.static(path.join(__dirname, 'public')));
 });
 
 app.configure('development', function(){
@@ -24,4 +25,5 @@ app.get('/rgb_led', function(req, res){
   res.render('rgb_led');
 });
 
-var io = require('socket.io').listen(server.listen(3000));
+server.listen(3000);
+var io = require('socket.io').listen(server);
