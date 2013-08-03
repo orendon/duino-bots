@@ -7,9 +7,14 @@
     "node"  : "0.10.15"
   },
 
+  "scripts": {
+    "start": "node app"
+  },
+
   "dependencies": {
     "johnny-five" : "0.7.1",
     "express"     : "3.3.4",
-    "jade"        : "0.34.1"
+    "jade"        : "0.34.1",
+    "socket.io"   : "0.9.16"
   }
 }
