@@ -7,7 +7,6 @@ module.exports = function (io) {
 
     board.on("ready", function () {
       led = new arduino.Led.RGB([9, 10, 11]); // Led is wired on these pins
-      led.green.on();
 
       this.repl.inject({
         led: led

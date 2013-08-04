@@ -1,3 +1,20 @@
 body {
-  font: "Verdana";
+}
+
+/*
+  LED RGB
+*/
+#left, #right { float: left; margin: 10px; }
+#colorpicker {
+  width: 100px;
+  height: 100px;
+  margin-left: 20px;
+  font-weight: bold;
+}
+.color {
+  font-size: large !important;
+}
+video {
+  border-style: dashed;
+  border-color: #f5f5f5;
 }
