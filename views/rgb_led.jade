@@ -6,5 +6,9 @@ html
   body
     h1 RGB Led
 
+    p Pick your color color:
+      input#colorpicker(class="color")
 
   script(src="/socket.io/socket.io.js")
+  script(src="/vendor/jscolor/jscolor.js")
+  script(src="/js/set_rgb_color.js")
