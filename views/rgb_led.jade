@@ -7,7 +7,7 @@ html
     h1 RGB Led
 
     p Pick your color color:
-      input#colorpicker(class="color")
+      input#colorpicker(class="color {onImmediateChange:'setColor(this);', pickerMode:'HVS'}")
 
   script(src="/socket.io/socket.io.js")
   script(src="/vendor/jscolor/jscolor.js")
