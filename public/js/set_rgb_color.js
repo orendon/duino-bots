@@ -10,24 +10,3 @@ function setColor(color) {
     blue  : color.rgb[2] * 255
   });
 }
-
-// shows user camara (if present)
-window.addEventListener("DOMContentLoaded", function() {
-  var video = document.querySelector("video"),
-    videoObj = { "video": true },
-    errBack = function(error) {
-      console.log("Video capture error: ", error.code);
-    };
-
-  if(navigator.getUserMedia) {
-    navigator.getUserMedia(videoObj, function(stream) {
-      video.src = stream;
-      video.play();
-    }, errBack);
-  } else if(navigator.webkitGetUserMedia) {
-    navigator.webkitGetUserMedia(videoObj, function(stream){
-      video.src = window.webkitURL.createObjectURL(stream);
-      video.play();
-    }, errBack);
-  }
-}, false);

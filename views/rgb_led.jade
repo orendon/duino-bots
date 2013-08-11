@@ -5,13 +5,11 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     #left
-      h1 RGB Led
+      h1 RGB Led, Bombillin
       hr
 
       h3 Pick your color color:
         input#colorpicker(class="color {onImmediateChange:'setColor(this);', pickerMode:'HVS'}")
-    #right
-      video(width="600px", height="400px", autoplay)
 
   script(src="/socket.io/socket.io.js")
   script(src="/vendor/jscolor/jscolor.js")
