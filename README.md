@@ -10,8 +10,13 @@ Arduino &amp; Node.js experiments
 ## Arduino
 Arduino projects using just Arduino and C++
 
+### - Remote controlled car (bluethooth)
+Bluetooth controlled car, compatible with most Android/iOS bluethooth apps.
+It uses HC-06 module, Arduino motor shield and 2 DC motors.
+Grab the code on `arduino/bluethooth_car/`
+
 ### - Blinking led
-Simple led blinking every second, grab the code on `arduino/blink/blink.ino`
+Simple led blinking every second, grab the code on `arduino/blink/`
 
 ## Nodebots (node.js, johnny-five and arduino)
 Arduino projects using node.js, this ones requires you to load firmata into the arduino
@@ -28,4 +33,4 @@ watch it live on [youtube](http://www.youtube.com/watch?v=c3o9VuWy7ls), grab the
 
 ### - Blinking led
 * setup circuit and connect your arduino, led on PIN 13
-* run the script, `node nodebots/blink/blink.js`
+* run the script, `node nodebots/blink/`
