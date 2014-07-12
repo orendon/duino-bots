@@ -29,4 +29,4 @@ server.listen(3000);
 var io = require('socket.io').listen(server);
 io.set('log level', 1);
 
-var rgbled = require('./labs/rgb_led')(io);
+var rgbled = require('./rgb_led')(io);
