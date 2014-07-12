@@ -1,3 +1,4 @@
+
 /*
   Arduino Car
   Android remote controller via bluetooth HC-06
@@ -27,20 +28,35 @@ void setup() {
   pinMode(leftBrake, OUTPUT);
   pinMode(rightDir, OUTPUT);
   pinMode(rightBrake, OUTPUT);
+
+  Serial.begin(9600);
 }
 
 void loop() {
-  moveForward();
-  delay(2000);
+  if (Serial.available()) {
+    int cmd = Serial.read();
+    // Serial.println(cmd, DEC);
 
-  moveBackwards();
-  delay(2000);
+    switch (cmd) {
+      case UP:
+        moveForward();
+        break;
+      case DOWN:
+        moveBackwards();
+        break;
+      case LEFT:
+        turnLeft();
+        break;
+      case RIGHT:
+        turnRight();
+        break;
+      case STOP:
+        brake();
+        break;
+    }
 
-  turnLeft();
-  delay(3000);
-
-  turnRight();
-  delay(3000);
+    Serial.flush();
+  }
 }
 
 void brake() {
