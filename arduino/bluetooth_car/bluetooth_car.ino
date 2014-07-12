@@ -1,10 +1,10 @@
-
 /*
   Arduino Car
   Android remote controller via bluetooth HC-06
 */
 
-#define HALF_SPEED 123
+#include "motor.h"
+
 #define FULL_SPEED 255
 
 #define UP 'U'
@@ -13,21 +13,18 @@
 #define RIGHT 'R'
 #define STOP 'S'
 
-// left motor (channel A)
-const int rightDir = 12;
-const int rightSpeed = 3;
-const int rightBrake = 9;
+// right motor (channel A)
+DuinoBots::Motor rightMotor(12, 9, 3);
 
 // right motor (channel B)
-const int leftDir = 13;
-const int leftSpeed = 11;
-const int leftBrake = 8;
+DuinoBots::Motor leftMotor(13, 8, 11);
 
 void setup() {
-  pinMode(leftDir, OUTPUT);
-  pinMode(leftBrake, OUTPUT);
-  pinMode(rightDir, OUTPUT);
-  pinMode(rightBrake, OUTPUT);
+  leftMotor.initialize();
+  leftMotor.setSpeed(FULL_SPEED);
+
+  rightMotor.initialize();
+  rightMotor.setSpeed(FULL_SPEED);
 
   Serial.begin(9600);
 }
@@ -39,58 +36,27 @@ void loop() {
 
     switch (cmd) {
       case UP:
-        moveForward();
+        leftMotor.moveForward();
+        rightMotor.moveForward();
         break;
       case DOWN:
-        moveBackwards();
+        leftMotor.moveBackwards();
+        rightMotor.moveBackwards();
         break;
       case LEFT:
-        turnLeft();
+        leftMotor.moveBackwards();
+        rightMotor.moveForward();
         break;
       case RIGHT:
-        turnRight();
+        leftMotor.moveForward();
+        rightMotor.moveBackwards();
         break;
       case STOP:
-        brake();
+        leftMotor.stop();
+        rightMotor.stop();
         break;
     }
 
     Serial.flush();
   }
-}
-
-void brake() {
-  digitalWrite(rightBrake, HIGH);
-  digitalWrite(leftBrake, HIGH);
-}
-
-void unbrake(int speedValue) {
-  digitalWrite(leftBrake, LOW);
-  analogWrite(leftSpeed, speedValue);
-  digitalWrite(rightBrake, LOW);
-  analogWrite(rightSpeed, speedValue);
-}
-
-void moveForward(){
-  digitalWrite(leftDir, HIGH);
-  digitalWrite(rightDir, HIGH);
-  unbrake(FULL_SPEED);
-}
-
-void moveBackwards() {
-  digitalWrite(leftDir, LOW);
-  digitalWrite(rightDir, LOW);
-  unbrake(FULL_SPEED);
-}
-
-void turnLeft() {
-  unbrake(HALF_SPEED);
-  digitalWrite(leftDir, LOW);
-  digitalWrite(rightDir, HIGH);
-}
-
-void turnRight() {
-  unbrake(HALF_SPEED);
-  digitalWrite(leftDir, HIGH);
-  digitalWrite(rightDir, LOW);
 }
