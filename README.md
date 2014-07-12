@@ -10,17 +10,17 @@ Arduino &amp; Node.js experiments
 ## Arduino
 Arduino projects using just Arduino and C++
 
-### - Remote controlled car (bluethooth)
-Bluetooth controlled car, compatible with most Android/iOS bluethooth apps.
+### - Remote controlled car (bluetooth)
+Bluetooth controlled car, compatible with most Android/iOS bluetooth apps.
 It uses HC-06 module, Arduino motor shield and 2 DC motors.
-Tested using [Bluethooth Controller](https://play.google.com/store/apps/details?id=apps.BT&hl=en) for Android, but compatible with most Android/iOS similar apps.
-Grab the code on `arduino/bluethooth_car/`
+Tested using [Bluetooth Controller](https://play.google.com/store/apps/details?id=apps.BT&hl=en) for Android, but compatible with most Android/iOS similar apps.
+Grab the code on `arduino/bluetooth_car/`
 
 ### - Blinking led
 Simple led blinking every second, grab the code on `arduino/blink/`
 
-## Nodebots (node.js, johnny-five and arduino)
-Arduino projects using node.js, this ones requires you to load firmata into the arduino
+## Nodebots
+Arduino projects using node.js (johnny-five), this ones requires you to load firmata into the arduino
 
 * Open the Arduino IDE, select: File > Examples > Firmata > StandardFirmata
 * Click "upload" button to load firmata into the arduino
